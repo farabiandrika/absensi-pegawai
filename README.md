@@ -4,7 +4,7 @@ Seeding
 node ./seed.js
 ```
 Documentation API
-1. Melakukan Absensi
+## 1. Melakukan Absensi
 
 Endpoint : (POST Method)
 ```
@@ -26,7 +26,7 @@ Response :
 }
 ```
 
-2. Membaca Laporan
+## 2. Membaca Laporan
 
 Endpoint : (GET Method)
 ```
@@ -66,7 +66,7 @@ Response :
 }
 ```
 
-3. Membaca Laporan Berdasarkan Keterangan
+## 3. Membaca Laporan Berdasarkan Keterangan
 
 Endpoint : (GET Method)
 ```
