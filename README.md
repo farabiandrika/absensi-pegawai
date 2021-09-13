@@ -4,14 +4,14 @@ Seeding
 node ./seed.js
 ```
 Documentation API
-1. Melakukan Absensi
+## 1. Melakukan Absensi
 
 Endpoint : (POST Method)
 ```
 /api/absen/
 ```
 
-Form-data: username, keterangan [hadir, izin, cuti]
+Form-data: username, keterangan [hadir, izin, cuti, etc]
 
 Response :
 ```
@@ -26,7 +26,7 @@ Response :
 }
 ```
 
-2. Membaca Laporan
+## 2. Membaca Laporan
 
 Endpoint : (GET Method)
 ```
@@ -36,44 +36,65 @@ Endpoint : (GET Method)
 Response :
 ```
 {
-    "message": "Success Getting Data",
-    "result": [
+  "message": "Success Getting Data",
+  "result": [
+    {
+      "_id": "5e96cbe292b97300fc901111",
+      "username": "farabiandrika",
+      "name": "Muhammad Farabi Andrika",
+      "absensi": [
         {
-            "_id": "5e96cbe292b97300fc901111",
-            "username": "farabiandrika",
-            "name": "Muhammad Farabi Andrika",
-            "jumlah_hadir": 4,
-            "jumlah_izin": 2,
-            "jumlah_cuti": 0
+          "_id": "tidak hadir",
+          "jumlah": 1
         },
         {
-            "_id": "5e96cbe292b97300fc901112",
-            "username": "ilhamurniawan",
-            "name": "Ilham Kurniawan",
-            "jumlah_hadir": 4,
-            "jumlah_izin": 0,
-            "jumlah_cuti": 0
+          "_id": "hadir",
+          "jumlah": 4
         },
         {
-            "_id": "5e96cbe292b97300fc901113",
-            "username": "john",
-            "name": "John Doe",
-            "jumlah_hadir": 1,
-            "jumlah_izin": 0,
-            "jumlah_cuti": 3
+          "_id": "izin",
+          "jumlah": 2
         }
-    ]
+      ]
+    },
+    {
+      "_id": "5e96cbe292b97300fc901112",
+      "username": "ilhamurniawan",
+      "name": "Ilham Kurniawan",
+      "absensi": [
+        {
+          "_id": "hadir",
+          "jumlah": 4
+        }
+      ]
+    },
+    {
+      "_id": "5e96cbe292b97300fc901113",
+      "username": "john",
+      "name": "John Doe",
+      "absensi": [
+        {
+          "_id": "cuti",
+          "jumlah": 3
+        },
+        {
+          "_id": "hadir",
+          "jumlah": 1
+        }
+      ]
+    }
+  ]
 }
 ```
 
-3. Membaca Laporan Berdasarkan Keterangan
+## 3. Membaca Laporan Berdasarkan Keterangan
 
 Endpoint : (GET Method)
 ```
 /api/laporan/:keterangan
 ```
 
-:keterangan (params) : [hadir, cuti, izin]
+:keterangan (params) : [hadir, cuti, izin, etc]
 
 Response
 ```
