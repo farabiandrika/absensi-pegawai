@@ -4,7 +4,6 @@ const { ObjectId } = mongoose.Schema;
 const attendantSchema = mongoose.Schema({
   status: {
     type: String,
-    enum: ["hadir", "izin", "cuti"],
     required: true,
   },
   employeeId: {

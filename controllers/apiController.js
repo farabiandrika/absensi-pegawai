@@ -32,41 +32,14 @@ module.exports = {
             {
               $match: {
                 $expr: { $eq: ["$employeeId", "$$employeeId"] },
-                status: "hadir",
               },
             },
-          ],
-          as: "hadir",
-        },
-      },
-      {
-        $lookup: {
-          from: "attendants",
-          let: { employeeId: "$_id" },
-          pipeline: [
             {
-              $match: {
-                $expr: { $eq: ["$employeeId", "$$employeeId"] },
-                status: "izin",
-              },
+              $group: { _id: "$status", jumlah: { $sum: 1 } },
             },
+            { $sort: { status: 1 } },
           ],
-          as: "izin",
-        },
-      },
-      {
-        $lookup: {
-          from: "attendants",
-          let: { employeeId: "$_id" },
-          pipeline: [
-            {
-              $match: {
-                $expr: { $eq: ["$employeeId", "$$employeeId"] },
-                status: "cuti",
-              },
-            },
-          ],
-          as: "cuti",
+          as: "absensi",
         },
       },
       {
@@ -74,9 +47,7 @@ module.exports = {
           _id: 1,
           username: 1,
           name: 1,
-          jumlah_hadir: { $size: "$hadir" },
-          jumlah_izin: { $size: "$izin" },
-          jumlah_cuti: { $size: "$cuti" },
+          absensi: "$absensi",
         },
       },
     ]).exec((err, result) => {
@@ -90,16 +61,6 @@ module.exports = {
   },
   laporanCustom: (req, res) => {
     const keterangan = req.params.keterangan;
-
-    if (
-      !(
-        keterangan.toLowerCase() == "hadir" ||
-        keterangan.toLowerCase() == "cuti" ||
-        keterangan.toLowerCase() == "izin"
-      )
-    ) {
-      res.status(500).json({ message: "Internal Server Error" });
-    }
 
     Employee.aggregate([
       {
