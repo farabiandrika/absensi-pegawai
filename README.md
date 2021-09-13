@@ -105,31 +105,87 @@ Endpoint : (GET Method)
 
 :keterangan (params) : [hadir, cuti, izin, etc]
 
+### Special Params: "telat"
+
 Response
 
 ```
 {
-    "message": "Success Getting Data",
-    "result": [
+  "message": "Success Getting Data",
+  "result": [
+    {
+      "_id": "5e96cbe292b97300fc901111",
+      "username": "farabiandrika",
+      "name": "Muhammad Farabi Andrika",
+      "jumlah": 3,
+      "absensi": [
         {
-            "_id": "5e96cbe292b97300fc901111",
-            "username": "farabiandrika",
-            "name": "Muhammad Farabi Andrika",
-            "jumlah": 4
+          "_id": "5e96cbe292b97300fc902222",
+          "status": "hadir",
+          "tanggal": "2021-09-10",
+          "waktu": "07:30"
         },
         {
-            "_id": "5e96cbe292b97300fc901112",
-            "username": "ilhamurniawan",
-            "name": "Ilham Kurniawan",
-            "jumlah": 4
+          "_id": "5e96cbe292b97300fc902224",
+          "status": "hadir",
+          "tanggal": "2021-09-12",
+          "waktu": "15:30"
         },
         {
-            "_id": "5e96cbe292b97300fc901113",
-            "username": "john",
-            "name": "John Doe",
-            "jumlah": 1
+          "_id": "5e96cbe292b97300fc902225",
+          "status": "hadir",
+          "tanggal": "2021-09-13",
+          "waktu": "07:30"
         }
-    ]
+      ]
+    },
+    {
+      "_id": "5e96cbe292b97300fc901112",
+      "username": "ilhamurniawan",
+      "name": "Ilham Kurniawan",
+      "jumlah": 4,
+      "absensi": [
+        {
+          "_id": "5e96cbe292b97300fc902226",
+          "status": "hadir",
+          "tanggal": "2021-09-10",
+          "waktu": "07:30"
+        },
+        {
+          "_id": "5e96cbe292b97300fc902227",
+          "status": "hadir",
+          "tanggal": "2021-09-11",
+          "waktu": "15:00"
+        },
+        {
+          "_id": "5e96cbe292b97300fc902228",
+          "status": "hadir",
+          "tanggal": "2021-09-12",
+          "waktu": "15:30"
+        },
+        {
+          "_id": "5e96cbe292b97300fc902229",
+          "status": "hadir",
+          "tanggal": "2021-09-13",
+          "waktu": "07:30"
+        }
+      ]
+    },
+    {
+      "_id": "5e96cbe292b97300fc901113",
+      "username": "john",
+      "name": "John Doe",
+      "jumlah": 1,
+      "absensi": [
+        {
+          "_id": "5e96cbe292b97300fc902233",
+          "status": "hadir",
+          "tanggal": "2021-09-13",
+          "waktu": "07:30"
+        }
+      ]
+    }
+  ]
 }
 ```
 
