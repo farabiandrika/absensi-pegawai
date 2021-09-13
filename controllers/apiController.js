@@ -61,6 +61,64 @@ module.exports = {
   },
   laporanCustom: (req, res) => {
     const keterangan = req.params.keterangan;
+    if (keterangan === "telat") {
+      Employee.aggregate([
+        {
+          $lookup: {
+            from: "attendants",
+            let: { employeeId: "$_id" },
+            pipeline: [
+              {
+                $match: {
+                  $and: [
+                    { $expr: { $eq: ["$employeeId", "$$employeeId"] } },
+                    { status: "hadir" },
+                  ],
+                },
+              },
+              {
+                $project: {
+                  status: 1,
+                  tanggal: {
+                    $dateToString: {
+                      date: { $add: ["$date", 7 * 60 * 60 * 1000] },
+                      format: "%Y-%m-%d",
+                    },
+                  },
+                  waktu: {
+                    $dateToString: {
+                      date: { $add: ["$date", 7 * 60 * 60 * 1000] },
+                      format: "%H:%M",
+                    },
+                  },
+                },
+              },
+              {
+                $match: { waktu: { $gte: "08:01", $lte: "24:00" } },
+              },
+            ],
+            as: "jumlah",
+          },
+        },
+        {
+          $project: {
+            _id: 1,
+            username: 1,
+            name: 1,
+            jumlah: { $size: "$jumlah" },
+            absensi: "$jumlah",
+          },
+        },
+      ]).exec((err, result) => {
+        if (err) {
+          res.status(500).json({ message: "Error", err });
+        }
+        if (result) {
+          res.status(200).json({ message: "Success Getting Data", result });
+        }
+      });
+      return;
+    }
 
     Employee.aggregate([
       {
@@ -74,6 +132,23 @@ module.exports = {
                 status: keterangan,
               },
             },
+            {
+              $project: {
+                status: 1,
+                tanggal: {
+                  $dateToString: {
+                    date: { $add: ["$date", 7 * 60 * 60 * 1000] },
+                    format: "%Y-%m-%d",
+                  },
+                },
+                waktu: {
+                  $dateToString: {
+                    date: { $add: ["$date", 7 * 60 * 60 * 1000] },
+                    format: "%H:%M",
+                  },
+                },
+              },
+            },
           ],
           as: "jumlah",
         },
@@ -84,6 +159,7 @@ module.exports = {
           username: 1,
           name: 1,
           jumlah: { $size: "$jumlah" },
+          absensi: "$jumlah",
         },
       },
     ]).exec((err, result) => {
