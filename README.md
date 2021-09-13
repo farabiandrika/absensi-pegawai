@@ -1,14 +1,15 @@
 # Absensi Pegawai
 
-Seeding
+## Instruction
 
-```
-node ./seed.js
-```
+1. Clone repo
+2. Run `npm install`
+3. Run `node .\seed.js` for seeding
+4. Run `npm run dev`
 
-Documentation API
+## Documentation API
 
-## 1. Melakukan Absensi
+### 1. Melakukan Absensi
 
 Endpoint : (POST Method)
 
@@ -32,7 +33,7 @@ Response :
 }
 ```
 
-## 2. Membaca Laporan
+### 2. Membaca Laporan
 
 Endpoint : (GET Method)
 
@@ -95,7 +96,7 @@ Response :
 }
 ```
 
-## 3. Membaca Laporan Berdasarkan Keterangan
+### 3. Membaca Laporan Berdasarkan Keterangan
 
 Endpoint : (GET Method)
 
@@ -105,7 +106,7 @@ Endpoint : (GET Method)
 
 :keterangan (params) : [hadir, cuti, izin, etc]
 
-### Special Params: "telat"
+#### Special Params: "telat"
 
 Response
 
@@ -189,7 +190,7 @@ Response
 }
 ```
 
-## 4. Absensi Detail
+### 4. Absensi Detail
 
 Endpoint : (GET Method)
 
