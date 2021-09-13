@@ -37,7 +37,7 @@ module.exports = {
             {
               $group: { _id: "$status", jumlah: { $sum: 1 } },
             },
-            { $sort: { status: 1 } },
+            { $sort: { _id: 1 } },
           ],
           as: "absensi",
         },
@@ -84,6 +84,55 @@ module.exports = {
           username: 1,
           name: 1,
           jumlah: { $size: "$jumlah" },
+        },
+      },
+    ]).exec((err, result) => {
+      if (err) {
+        res.status(500).json({ message: "Error", err });
+      }
+      if (result) {
+        res.status(200).json({ message: "Success Getting Data", result });
+      }
+    });
+  },
+
+  detail: (req, res) => {
+    Employee.aggregate([
+      {
+        $lookup: {
+          from: "attendants",
+          let: { employeeId: "$_id" },
+          pipeline: [
+            {
+              $match: {
+                $expr: { $eq: ["$employeeId", "$$employeeId"] },
+              },
+            },
+            {
+              $project: {
+                _id: 1,
+                status: 1,
+                date: {
+                  $dateToString: {
+                    date: { $add: ["$date", 7 * 60 * 60 * 1000] },
+                    format: "%Y-%m-%d %H:%M:%S",
+                  },
+                },
+              },
+            },
+            {
+              $sort: { date: 1 },
+            },
+          ],
+          as: "absensi",
+        },
+      },
+      {
+        $project: {
+          _id: 1,
+          username: 1,
+          name: 1,
+          absensi: 1,
         },
       },
     ]).exec((err, result) => {

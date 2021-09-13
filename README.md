@@ -1,12 +1,17 @@
 # Absensi Pegawai
+
 Seeding
+
 ```
 node ./seed.js
 ```
+
 Documentation API
+
 ## 1. Melakukan Absensi
 
 Endpoint : (POST Method)
+
 ```
 /api/absen/
 ```
@@ -14,6 +19,7 @@ Endpoint : (POST Method)
 Form-data: username, keterangan [hadir, izin, cuti, etc]
 
 Response :
+
 ```
 {
     "message": "Absensi Sukses",
@@ -29,11 +35,13 @@ Response :
 ## 2. Membaca Laporan
 
 Endpoint : (GET Method)
+
 ```
 /api/laporan
 ```
 
 Response :
+
 ```
 {
   "message": "Success Getting Data",
@@ -90,6 +98,7 @@ Response :
 ## 3. Membaca Laporan Berdasarkan Keterangan
 
 Endpoint : (GET Method)
+
 ```
 /api/laporan/:keterangan
 ```
@@ -97,6 +106,7 @@ Endpoint : (GET Method)
 :keterangan (params) : [hadir, cuti, izin, etc]
 
 Response
+
 ```
 {
     "message": "Success Getting Data",
@@ -120,5 +130,104 @@ Response
             "jumlah": 1
         }
     ]
+}
+```
+
+## 4. Absensi Detail
+
+Endpoint : (GET Method)
+
+```
+/api/detail
+```
+
+Response
+
+```
+{
+  "message": "Success Getting Data",
+  "result": [
+    {
+      "_id": "5e96cbe292b97300fc901111",
+      "username": "farabiandrika",
+      "name": "Muhammad Farabi Andrika",
+      "absensi": [
+        {
+          "_id": "5e96cbe292b97300fc902222",
+          "status": "hadir",
+          "date": "2021-09-10 07:30:00"
+        },
+        {
+          "_id": "5e96cbe292b97300fc902223",
+          "status": "izin",
+          "date": "2021-09-11 15:00:00"
+        },
+        {
+          "_id": "5e96cbe292b97300fc902224",
+          "status": "hadir",
+          "date": "2021-09-12 15:30:00"
+        },
+        {
+          "_id": "5e96cbe292b97300fc902225",
+          "status": "hadir",
+          "date": "2021-09-13 07:30:00"
+        }
+      ]
+    },
+    {
+      "_id": "5e96cbe292b97300fc901112",
+      "username": "ilhamurniawan",
+      "name": "Ilham Kurniawan",
+      "absensi": [
+        {
+          "_id": "5e96cbe292b97300fc902226",
+          "status": "hadir",
+          "date": "2021-09-10 07:30:00"
+        },
+        {
+          "_id": "5e96cbe292b97300fc902227",
+          "status": "hadir",
+          "date": "2021-09-11 15:00:00"
+        },
+        {
+          "_id": "5e96cbe292b97300fc902228",
+          "status": "hadir",
+          "date": "2021-09-12 15:30:00"
+        },
+        {
+          "_id": "5e96cbe292b97300fc902229",
+          "status": "hadir",
+          "date": "2021-09-13 07:30:00"
+        }
+      ]
+    },
+    {
+      "_id": "5e96cbe292b97300fc901113",
+      "username": "john",
+      "name": "John Doe",
+      "absensi": [
+        {
+          "_id": "5e96cbe292b97300fc902230",
+          "status": "cuti",
+          "date": "2021-09-10 07:30:00"
+        },
+        {
+          "_id": "5e96cbe292b97300fc902231",
+          "status": "cuti",
+          "date": "2021-09-11 07:00:00"
+        },
+        {
+          "_id": "5e96cbe292b97300fc902232",
+          "status": "cuti",
+          "date": "2021-09-12 07:30:00"
+        },
+        {
+          "_id": "5e96cbe292b97300fc902233",
+          "status": "hadir",
+          "date": "2021-09-13 07:30:00"
+        }
+      ]
+    }
+  ]
 }
 ```

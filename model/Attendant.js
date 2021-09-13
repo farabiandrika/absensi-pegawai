@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+
 const { ObjectId } = mongoose.Schema;
 
 const attendantSchema = mongoose.Schema({
@@ -9,6 +10,10 @@ const attendantSchema = mongoose.Schema({
   employeeId: {
     type: ObjectId,
     ref: "Employee",
+  },
+  date: {
+    type: Date,
+    default: Date.now,
   },
 });
 

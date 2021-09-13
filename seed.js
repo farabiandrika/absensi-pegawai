@@ -1,31 +1,20 @@
 var seeder = require("mongoose-seed");
+const moment = require("moment-timezone");
 var mongoose = require("mongoose");
 
 // Connect to MongoDB via Mongoose
-seeder.connect(
-  "mongodb://localhost:27017/absensi_pegawai",
-  function () {
-    // Load Mongoose models
-    seeder.loadModels([
-        "./model/Employee",      
-        "./model/Attendant",
-    ]);
+seeder.connect("mongodb://localhost:27017/absensi_pegawai", function () {
+  // Load Mongoose models
+  seeder.loadModels(["./model/Employee", "./model/Attendant"]);
 
-    // Clear specified collections
-    seeder.clearModels(
-      [
-          "Employee",        
-          "Attendant",
-      ],
-      function () {
-        // Callback to populate DB once collections have been cleared
-        seeder.populateModels(data, function () {
-          seeder.disconnect();
-        });
-      }
-    );
-  }
-);
+  // Clear specified collections
+  seeder.clearModels(["Employee", "Attendant"], function () {
+    // Callback to populate DB once collections have been cleared
+    seeder.populateModels(data, function () {
+      seeder.disconnect();
+    });
+  });
+});
 
 var data = [
   // start Epmloyee
@@ -34,7 +23,7 @@ var data = [
     documents: [
       {
         _id: mongoose.Types.ObjectId("5e96cbe292b97300fc901111"),
-        username: 'farabiandrika',
+        username: "farabiandrika",
         name: "Muhammad Farabi Andrika",
         attendantId: [
           { _id: mongoose.Types.ObjectId("5e96cbe292b97300fc902222") },
@@ -45,7 +34,7 @@ var data = [
       },
       {
         _id: mongoose.Types.ObjectId("5e96cbe292b97300fc901112"),
-        username: 'ilhamurniawan',
+        username: "ilhamurniawan",
         name: "Ilham Kurniawan",
         attendantId: [
           { _id: mongoose.Types.ObjectId("5e96cbe292b97300fc902226") },
@@ -56,7 +45,7 @@ var data = [
       },
       {
         _id: mongoose.Types.ObjectId("5e96cbe292b97300fc901113"),
-        username: 'john',
+        username: "john",
         name: "John Doe",
         attendantId: [
           { _id: mongoose.Types.ObjectId("5e96cbe292b97300fc902230") },
@@ -75,77 +64,125 @@ var data = [
       // Hadir
       {
         _id: mongoose.Types.ObjectId("5e96cbe292b97300fc902222"),
-        status: 'hadir',            
-        employeeId:
-          { _id: mongoose.Types.ObjectId("5e96cbe292b97300fc901111") }        
+        status: "hadir",
+        employeeId: {
+          _id: mongoose.Types.ObjectId("5e96cbe292b97300fc901111"),
+        },
+        date: moment
+          .tz("2021-09-10 00:30:00", "YYYY-MM-DD HH:mm:ss", "UTC")
+          .format(),
       },
-        //   Izin
+      //   Izin
       {
         _id: mongoose.Types.ObjectId("5e96cbe292b97300fc902223"),
-        status: 'izin',            
-        employeeId:
-          { _id: mongoose.Types.ObjectId("5e96cbe292b97300fc901111") }        
+        status: "izin",
+        employeeId: {
+          _id: mongoose.Types.ObjectId("5e96cbe292b97300fc901111"),
+        },
+        date: moment
+          .tz("2021-09-11 08:00:00", "YYYY-MM-DD HH:mm:ss", "UTC")
+          .format(),
       },
       {
         _id: mongoose.Types.ObjectId("5e96cbe292b97300fc902224"),
-        status: 'hadir',            
-        employeeId:
-          { _id: mongoose.Types.ObjectId("5e96cbe292b97300fc901111") }        
+        status: "hadir",
+        employeeId: {
+          _id: mongoose.Types.ObjectId("5e96cbe292b97300fc901111"),
+        },
+        date: moment
+          .tz("2021-09-12 08:30:00", "YYYY-MM-DD HH:mm:ss", "UTC")
+          .format(),
       },
       {
         _id: mongoose.Types.ObjectId("5e96cbe292b97300fc902225"),
-        status: 'hadir',            
-        employeeId:
-          { _id: mongoose.Types.ObjectId("5e96cbe292b97300fc901111") }        
+        status: "hadir",
+        employeeId: {
+          _id: mongoose.Types.ObjectId("5e96cbe292b97300fc901111"),
+        },
+        date: moment
+          .tz("2021-09-13 00:30:00", "YYYY-MM-DD HH:mm:ss", "UTC")
+          .format(),
       },
       {
         _id: mongoose.Types.ObjectId("5e96cbe292b97300fc902226"),
-        status: 'hadir',            
-        employeeId:
-          { _id: mongoose.Types.ObjectId("5e96cbe292b97300fc901112") }        
+        status: "hadir",
+        employeeId: {
+          _id: mongoose.Types.ObjectId("5e96cbe292b97300fc901112"),
+        },
+        date: moment
+          .tz("2021-09-10 00:30:00", "YYYY-MM-DD HH:mm:ss", "UTC")
+          .format(),
       },
       {
         _id: mongoose.Types.ObjectId("5e96cbe292b97300fc902227"),
-        status: 'hadir',            
-        employeeId:
-          { _id: mongoose.Types.ObjectId("5e96cbe292b97300fc901112") }        
+        status: "hadir",
+        employeeId: {
+          _id: mongoose.Types.ObjectId("5e96cbe292b97300fc901112"),
+        },
+        date: moment
+          .tz("2021-09-11 08:00:00", "YYYY-MM-DD HH:mm:ss", "UTC")
+          .format(),
       },
       {
         _id: mongoose.Types.ObjectId("5e96cbe292b97300fc902228"),
-        status: 'hadir',            
-        employeeId:
-          { _id: mongoose.Types.ObjectId("5e96cbe292b97300fc901112") }        
+        status: "hadir",
+        employeeId: {
+          _id: mongoose.Types.ObjectId("5e96cbe292b97300fc901112"),
+        },
+        date: moment
+          .tz("2021-09-12 08:30:00", "YYYY-MM-DD HH:mm:ss", "UTC")
+          .format(),
       },
       {
         _id: mongoose.Types.ObjectId("5e96cbe292b97300fc902229"),
-        status: 'hadir',            
-        employeeId:
-          { _id: mongoose.Types.ObjectId("5e96cbe292b97300fc901112") }        
+        status: "hadir",
+        employeeId: {
+          _id: mongoose.Types.ObjectId("5e96cbe292b97300fc901112"),
+        },
+        date: moment
+          .tz("2021-09-13 00:30:00", "YYYY-MM-DD HH:mm:ss", "UTC")
+          .format(),
       },
       {
         _id: mongoose.Types.ObjectId("5e96cbe292b97300fc902230"),
-        status: 'cuti',            
-        employeeId:
-          { _id: mongoose.Types.ObjectId("5e96cbe292b97300fc901113") }        
+        status: "cuti",
+        employeeId: {
+          _id: mongoose.Types.ObjectId("5e96cbe292b97300fc901113"),
+        },
+        date: moment
+          .tz("2021-09-10 00:30:00", "YYYY-MM-DD HH:mm:ss", "UTC")
+          .format(),
       },
       {
         _id: mongoose.Types.ObjectId("5e96cbe292b97300fc902231"),
-        status: 'cuti',            
-        employeeId:
-          { _id: mongoose.Types.ObjectId("5e96cbe292b97300fc901113") }        
+        status: "cuti",
+        employeeId: {
+          _id: mongoose.Types.ObjectId("5e96cbe292b97300fc901113"),
+        },
+        date: moment
+          .tz("2021-09-11 00:00:00", "YYYY-MM-DD HH:mm:ss", "UTC")
+          .format(),
       },
       {
         _id: mongoose.Types.ObjectId("5e96cbe292b97300fc902232"),
-        status: 'cuti',            
-        employeeId:
-          { _id: mongoose.Types.ObjectId("5e96cbe292b97300fc901113") }        
+        status: "cuti",
+        employeeId: {
+          _id: mongoose.Types.ObjectId("5e96cbe292b97300fc901113"),
+        },
+        date: moment
+          .tz("2021-09-12 00:30:00", "YYYY-MM-DD HH:mm:ss", "UTC")
+          .format(),
       },
       {
         _id: mongoose.Types.ObjectId("5e96cbe292b97300fc902233"),
-        status: 'hadir',            
-        employeeId:
-          { _id: mongoose.Types.ObjectId("5e96cbe292b97300fc901113") }        
+        status: "hadir",
+        employeeId: {
+          _id: mongoose.Types.ObjectId("5e96cbe292b97300fc901113"),
+        },
+        date: moment
+          .tz("2021-09-13 00:30:00", "YYYY-MM-DD HH:mm:ss", "UTC")
+          .format(),
       },
-    ]
-  }
+    ],
+  },
 ];
