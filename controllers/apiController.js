@@ -1,25 +1,54 @@
 const Attendant = require("../model/Attendant");
 const Employee = require("../model/Employee");
+const moment = require("moment");
 
 module.exports = {
   absen: async (req, res) => {
     try {
       const { username, keterangan } = req.body;
+
+      // Find Employee
       const employee = await Employee.findOne({ username: username });
+
+      // Checking employee if exist or not
       if (!employee) {
-        res.status(422).json({ message: `User ${username} not found` });
+        return res.status(422).json({ message: `User ${username} not found` });
       }
+
+      // Init start of day
+      const today = moment().startOf("day");
+
+      // Find attendance exist or not for this day
+      const attendance = await Attendant.find({
+        employeeId: employee.id,
+        date: {
+          $gte: today,
+          $lte: moment(today).endOf("day").toDate(),
+        },
+      });
+
+      // Checking if attendance exist
+      if (attendance.length > 0) {
+        return res.status(405).json({ message: `Sudah melakukan absen` });
+      }
+
+      // Create new attendance record
       const attendant = await Attendant.create({
         status: keterangan.toLowerCase(),
         employeeId: employee.id,
       });
 
+      // Push new attendant id to employee fid column
       employee.attendantId.push({ _id: attendant._id });
+
+      // Saving
       await employee.save();
 
-      res.status(201).json({ message: "Absensi Sukses", attendant });
+      // return success response
+      return res.status(201).json({ message: "Absensi Sukses", attendant });
     } catch (error) {
-      res.status(500).json({ message: "Internal Server Error", error });
+      // if error return error response
+      return res.status(500).json({ message: "Internal Server Error", error });
     }
   },
   laporan: (req, res) => {
@@ -53,14 +82,17 @@ module.exports = {
     ]).exec((err, result) => {
       if (err) {
         res.status(500).json({ message: "Error", err });
+        return;
       }
       if (result) {
         res.status(200).json({ message: "Success Getting Data", result });
+        return;
       }
     });
   },
   laporanCustom: (req, res) => {
     const keterangan = req.params.keterangan;
+
     if (keterangan === "telat") {
       Employee.aggregate([
         {
@@ -164,10 +196,12 @@ module.exports = {
       },
     ]).exec((err, result) => {
       if (err) {
-        res.status(500).json({ message: "Error", err });
+        return res.status(500).json({ message: "Error", err });
       }
       if (result) {
-        res.status(200).json({ message: "Success Getting Data", result });
+        return res
+          .status(200)
+          .json({ message: "Success Getting Data", result });
       }
     });
   },
@@ -213,10 +247,12 @@ module.exports = {
       },
     ]).exec((err, result) => {
       if (err) {
-        res.status(500).json({ message: "Error", err });
+        return res.status(500).json({ message: "Error", err });
       }
       if (result) {
-        res.status(200).json({ message: "Success Getting Data", result });
+        return res
+          .status(200)
+          .json({ message: "Success Getting Data", result });
       }
     });
   },

@@ -118,14 +118,8 @@ Response
       "_id": "5e96cbe292b97300fc901111",
       "username": "farabiandrika",
       "name": "Muhammad Farabi Andrika",
-      "jumlah": 3,
+      "jumlah": 2,
       "absensi": [
-        {
-          "_id": "5e96cbe292b97300fc902222",
-          "status": "hadir",
-          "tanggal": "2021-09-10",
-          "waktu": "07:30"
-        },
         {
           "_id": "5e96cbe292b97300fc902224",
           "status": "hadir",
@@ -133,10 +127,10 @@ Response
           "waktu": "15:30"
         },
         {
-          "_id": "5e96cbe292b97300fc902225",
+          "_id": "613f7b262339b0fd315db5e3",
           "status": "hadir",
           "tanggal": "2021-09-13",
-          "waktu": "07:30"
+          "waktu": "23:24"
         }
       ]
     },
@@ -144,14 +138,8 @@ Response
       "_id": "5e96cbe292b97300fc901112",
       "username": "ilhamurniawan",
       "name": "Ilham Kurniawan",
-      "jumlah": 4,
+      "jumlah": 2,
       "absensi": [
-        {
-          "_id": "5e96cbe292b97300fc902226",
-          "status": "hadir",
-          "tanggal": "2021-09-10",
-          "waktu": "07:30"
-        },
         {
           "_id": "5e96cbe292b97300fc902227",
           "status": "hadir",
@@ -163,12 +151,6 @@ Response
           "status": "hadir",
           "tanggal": "2021-09-12",
           "waktu": "15:30"
-        },
-        {
-          "_id": "5e96cbe292b97300fc902229",
-          "status": "hadir",
-          "tanggal": "2021-09-13",
-          "waktu": "07:30"
         }
       ]
     },
@@ -176,113 +158,9 @@ Response
       "_id": "5e96cbe292b97300fc901113",
       "username": "john",
       "name": "John Doe",
-      "jumlah": 1,
+      "jumlah": 0,
       "absensi": [
-        {
-          "_id": "5e96cbe292b97300fc902233",
-          "status": "hadir",
-          "tanggal": "2021-09-13",
-          "waktu": "07:30"
-        }
-      ]
-    }
-  ]
-}
-```
 
-### 4. Absensi Detail
-
-Endpoint : (GET Method)
-
-```
-/api/detail
-```
-
-Response
-
-```
-{
-  "message": "Success Getting Data",
-  "result": [
-    {
-      "_id": "5e96cbe292b97300fc901111",
-      "username": "farabiandrika",
-      "name": "Muhammad Farabi Andrika",
-      "absensi": [
-        {
-          "_id": "5e96cbe292b97300fc902222",
-          "status": "hadir",
-          "date": "2021-09-10 07:30:00"
-        },
-        {
-          "_id": "5e96cbe292b97300fc902223",
-          "status": "izin",
-          "date": "2021-09-11 15:00:00"
-        },
-        {
-          "_id": "5e96cbe292b97300fc902224",
-          "status": "hadir",
-          "date": "2021-09-12 15:30:00"
-        },
-        {
-          "_id": "5e96cbe292b97300fc902225",
-          "status": "hadir",
-          "date": "2021-09-13 07:30:00"
-        }
-      ]
-    },
-    {
-      "_id": "5e96cbe292b97300fc901112",
-      "username": "ilhamurniawan",
-      "name": "Ilham Kurniawan",
-      "absensi": [
-        {
-          "_id": "5e96cbe292b97300fc902226",
-          "status": "hadir",
-          "date": "2021-09-10 07:30:00"
-        },
-        {
-          "_id": "5e96cbe292b97300fc902227",
-          "status": "hadir",
-          "date": "2021-09-11 15:00:00"
-        },
-        {
-          "_id": "5e96cbe292b97300fc902228",
-          "status": "hadir",
-          "date": "2021-09-12 15:30:00"
-        },
-        {
-          "_id": "5e96cbe292b97300fc902229",
-          "status": "hadir",
-          "date": "2021-09-13 07:30:00"
-        }
-      ]
-    },
-    {
-      "_id": "5e96cbe292b97300fc901113",
-      "username": "john",
-      "name": "John Doe",
-      "absensi": [
-        {
-          "_id": "5e96cbe292b97300fc902230",
-          "status": "cuti",
-          "date": "2021-09-10 07:30:00"
-        },
-        {
-          "_id": "5e96cbe292b97300fc902231",
-          "status": "cuti",
-          "date": "2021-09-11 07:00:00"
-        },
-        {
-          "_id": "5e96cbe292b97300fc902232",
-          "status": "cuti",
-          "date": "2021-09-12 07:30:00"
-        },
-        {
-          "_id": "5e96cbe292b97300fc902233",
-          "status": "hadir",
-          "date": "2021-09-13 07:30:00"
-        }
       ]
     }
   ]
