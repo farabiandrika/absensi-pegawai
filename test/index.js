@@ -101,4 +101,33 @@ describe("API ENDPOINT TESTING", () => {
         done();
       });
   });
+
+  it("Add User", (done) => {
+    chai
+      .request(app)
+      .post("/api/user/add")
+      .set("Content-Type", "application/x-www-form-urlencoded")
+      .send({ username: "farabiandrika23" })
+      .send({ name: "Farabi" })
+      .end((err, res) => {
+        expect(err).to.be.null;
+        if (res.status !== 201) {
+          console.log(res.text);
+        }
+        expect(res).to.have.status(201);
+        expect(res.body).to.be.an("Object");
+        expect(res.body).to.have.property("message");
+        expect(res.body.message).to.equal("Success Add User");
+        expect(res.body).to.have.property("employee");
+        expect(res.body.employee).to.have.all.keys(
+          "username",
+          "name",
+          "attendantId",
+          "_id",
+          "__v"
+        );
+
+        done();
+      });
+  });
 });

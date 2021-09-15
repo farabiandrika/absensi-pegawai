@@ -256,4 +256,22 @@ module.exports = {
       }
     });
   },
+
+  addUser: async (req, res) => {
+    const { username, name } = req.body;
+    try {
+      const employee = await Employee.create({
+        username: username.replace(/\s/g, ""),
+        name: name,
+      });
+      return res.status(201).json({ message: "Success Add User", employee });
+    } catch (error) {
+      if (error.code === 11000) {
+        return res.status(500).json({
+          message: "Internal Server Error",
+          error: "Username already exist ",
+        });
+      }
+    }
+  },
 };
