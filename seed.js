@@ -68,8 +68,11 @@ var data = [
         employeeId: {
           _id: mongoose.Types.ObjectId("5e96cbe292b97300fc901111"),
         },
-        date: moment
+        start: moment
           .tz("2021-09-10 00:30:00", "YYYY-MM-DD HH:mm:ss", "UTC")
+          .format(),
+        end: moment
+          .tz("2021-09-10 09:30:00", "YYYY-MM-DD HH:mm:ss", "UTC")
           .format(),
       },
       //   Izin
@@ -79,8 +82,11 @@ var data = [
         employeeId: {
           _id: mongoose.Types.ObjectId("5e96cbe292b97300fc901111"),
         },
-        date: moment
+        start: moment
           .tz("2021-09-11 08:00:00", "YYYY-MM-DD HH:mm:ss", "UTC")
+          .format(),
+        end: moment
+          .tz("2021-09-11 17:00:00", "YYYY-MM-DD HH:mm:ss", "UTC")
           .format(),
       },
       {
@@ -89,8 +95,11 @@ var data = [
         employeeId: {
           _id: mongoose.Types.ObjectId("5e96cbe292b97300fc901111"),
         },
-        date: moment
+        start: moment
           .tz("2021-09-12 08:30:00", "YYYY-MM-DD HH:mm:ss", "UTC")
+          .format(),
+        start: moment
+          .tz("2021-09-12 17:30:00", "YYYY-MM-DD HH:mm:ss", "UTC")
           .format(),
       },
       {
@@ -99,8 +108,11 @@ var data = [
         employeeId: {
           _id: mongoose.Types.ObjectId("5e96cbe292b97300fc901111"),
         },
-        date: moment
+        start: moment
           .tz("2021-09-13 00:30:00", "YYYY-MM-DD HH:mm:ss", "UTC")
+          .format(),
+        start: moment
+          .tz("2021-09-13 08:30:00", "YYYY-MM-DD HH:mm:ss", "UTC")
           .format(),
       },
       {
@@ -109,8 +121,11 @@ var data = [
         employeeId: {
           _id: mongoose.Types.ObjectId("5e96cbe292b97300fc901112"),
         },
-        date: moment
+        start: moment
           .tz("2021-09-10 00:30:00", "YYYY-MM-DD HH:mm:ss", "UTC")
+          .format(),
+        end: moment
+          .tz("2021-09-10 08:30:00", "YYYY-MM-DD HH:mm:ss", "UTC")
           .format(),
       },
       {
@@ -119,8 +134,11 @@ var data = [
         employeeId: {
           _id: mongoose.Types.ObjectId("5e96cbe292b97300fc901112"),
         },
-        date: moment
+        start: moment
           .tz("2021-09-11 08:00:00", "YYYY-MM-DD HH:mm:ss", "UTC")
+          .format(),
+        start: moment
+          .tz("2021-09-11 16:00:00", "YYYY-MM-DD HH:mm:ss", "UTC")
           .format(),
       },
       {
@@ -129,8 +147,11 @@ var data = [
         employeeId: {
           _id: mongoose.Types.ObjectId("5e96cbe292b97300fc901112"),
         },
-        date: moment
+        start: moment
           .tz("2021-09-12 08:30:00", "YYYY-MM-DD HH:mm:ss", "UTC")
+          .format(),
+        start: moment
+          .tz("2021-09-12 016:30:00", "YYYY-MM-DD HH:mm:ss", "UTC")
           .format(),
       },
       {
@@ -139,8 +160,11 @@ var data = [
         employeeId: {
           _id: mongoose.Types.ObjectId("5e96cbe292b97300fc901112"),
         },
-        date: moment
+        start: moment
           .tz("2021-09-13 00:30:00", "YYYY-MM-DD HH:mm:ss", "UTC")
+          .format(),
+        end: moment
+          .tz("2021-09-13 08:30:00", "YYYY-MM-DD HH:mm:ss", "UTC")
           .format(),
       },
       {
@@ -149,7 +173,10 @@ var data = [
         employeeId: {
           _id: mongoose.Types.ObjectId("5e96cbe292b97300fc901113"),
         },
-        date: moment
+        start: moment
+          .tz("2021-09-10 00:30:00", "YYYY-MM-DD HH:mm:ss", "UTC")
+          .format(),
+        end: moment
           .tz("2021-09-10 00:30:00", "YYYY-MM-DD HH:mm:ss", "UTC")
           .format(),
       },
@@ -159,8 +186,11 @@ var data = [
         employeeId: {
           _id: mongoose.Types.ObjectId("5e96cbe292b97300fc901113"),
         },
-        date: moment
+        start: moment
           .tz("2021-09-11 00:00:00", "YYYY-MM-DD HH:mm:ss", "UTC")
+          .format(),
+        end: moment
+          .tz("2021-09-13 00:00:00", "YYYY-MM-DD HH:mm:ss", "UTC")
           .format(),
       },
       {
@@ -169,8 +199,11 @@ var data = [
         employeeId: {
           _id: mongoose.Types.ObjectId("5e96cbe292b97300fc901113"),
         },
-        date: moment
+        start: moment
           .tz("2021-09-12 00:30:00", "YYYY-MM-DD HH:mm:ss", "UTC")
+          .format(),
+        end: moment
+          .tz("2021-09-21 00:30:00", "YYYY-MM-DD HH:mm:ss", "UTC")
           .format(),
       },
       {
@@ -179,8 +212,11 @@ var data = [
         employeeId: {
           _id: mongoose.Types.ObjectId("5e96cbe292b97300fc901113"),
         },
-        date: moment
+        start: moment
           .tz("2021-09-13 00:30:00", "YYYY-MM-DD HH:mm:ss", "UTC")
+          .format(),
+        end: moment
+          .tz("2021-09-15 00:30:00", "YYYY-MM-DD HH:mm:ss", "UTC")
           .format(),
       },
     ],
